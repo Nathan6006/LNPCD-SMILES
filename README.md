@@ -10,10 +10,9 @@ This repo contains the scripts that reconstruct the complete set of molecules fo
 One folder per source dataset:
 
 ```
-[Author_descriptor]/
-    [generate.py]        # builds the library for this study
-    [fragments.csv]      # building blocks as reported in the paper
-    [output.csv]         # generated SMILES
+[Dataset Identifier]/
+    [python files]     # Python scripts used to generate the data
+    [csv files]        # CSV files containing data, including the individual components
 ```
 
 `Miller_zwitter` and `Lee_unsat` did not require generation — structures for these studies were already available in machine-readable form through LNPDB, so those folders contain the extracted structures rather than generation code.
