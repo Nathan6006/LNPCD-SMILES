@@ -34,5 +34,4 @@ For each study, the reported building blocks are combined according to the react
 
 
 ## License
-
-[e.g. MIT]
+MIT
