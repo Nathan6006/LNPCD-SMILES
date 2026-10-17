@@ -84,22 +84,6 @@ INK_MUTED = "#84837c"
 SURFACE = "#ffffff"
 RULE = "#d9d8d2"
 
-# Human-readable library names, keyed by Experiment_ID (cell-line suffixes on
-# the dendrimer study are dropped -- it is a single library screened twice).
-LIBRARY_NAMES = {
-    "Liu_iphos": "Liu — ionizable phospholipid",
-    "Xue_CAD_LNP": "Xue — cationic amphiphilic drug",
-    "Han_amidine": "Han — amidine",
-    "Han_a3": "Han — A3 multicomponent",
-    "Lee_unsat": "Lee — unsaturated",
-    "Lin_peptide": "Lin — peptide",
-    "Miller_zwitter": "Miller — zwitterionic (ZAL)",
-    "Yu_Aminoglycoside": "Yu — aminoglycoside",
-    "Han_branched": "Han — branched ester",
-    "Zhang_Aminoglycoside": "Zhang — aminoglycoside",
-    "Farbiak_Dendrimer": "Farbiak — dendrimer",
-}
-
 
 # --------------------------------------------------------------------------- #
 # Data
@@ -108,6 +92,9 @@ LIBRARY_NAMES = {
 
 def load_data() -> pd.DataFrame:
     df = pd.read_csv(DATA)
+    # Experiment_ID verbatim, except that the dendrimer study carries a cell-line
+    # suffix on what is one library screened twice -- splitting it would draw the
+    # same nine lipids twice, on top of each other, under two legend entries.
     df["library"] = (
         df["Experiment_ID"].str.replace("_HeLa", "", regex=False).str.replace("_igrov1", "", regex=False)
     )
@@ -305,7 +292,7 @@ def main() -> None:
         Line2D(
             [], [], marker="o", linestyle="none", markersize=4.5,
             markerfacecolor=colors[lib], markeredgecolor=SURFACE, markeredgewidth=0.3,
-            label=f"{LIBRARY_NAMES[lib]}  ({(lipids['library'] == lib).sum()})",
+            label=f"{lib}  ({(lipids['library'] == lib).sum()})",
         )
         for lib in order
     ]
@@ -318,7 +305,7 @@ def main() -> None:
         handletextpad=0.5,
         labelspacing=0.72,
         borderpad=0,
-        title="Source library (lipids)",
+        title="Experiment ID (lipids)",
         title_fontsize=6.8,
     )
     leg.get_title().set_color(INK)
