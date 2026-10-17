@@ -30,7 +30,17 @@ For each study, the reported building blocks are combined according to the react
 
 ## Citation
 
+If you use this code or the LNPCD dataset, please cite the dataset archive:
 
+> Liu, N., Zhu, Q. & Lu, Z.-R. A cytotoxicity dataset for data-driven design of
+> ionizable lipid nanoparticles. Zenodo https://doi.org/10.5281/zenodo.23428876 (2026).
+
+## Related
+
+* **Dataset archive (DOI):** https://doi.org/10.5281/zenodo.23428876
+* **Interactive database:** https://lnpcd.pages.dev
+* **Web app source:** https://github.com/Nathan6006/lnpcd
 
 ## License
-MIT
+The code in this repository is released under the MIT License (see [`LICENSE`](LICENSE)).
+The LNPCD dataset itself is distributed separately under CC BY 4.0.
